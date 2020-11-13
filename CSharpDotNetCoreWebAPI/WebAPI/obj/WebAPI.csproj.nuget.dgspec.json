@@ -4,6 +4,16 @@
     "C:\\Users\\heyme\\source\\repos\\CSharpNetCoreWebApi\\CSharpDotNetCoreWebAPI\\WebAPI\\WebAPI.csproj": {}
   },
   "projects": {
+    "C:\\Users\\heyme\\source\\repos\\CSharpNetCoreWebApi\\CSharpDotNetCoreWebAPI\\Models\\Models.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\heyme\\source\\repos\\CSharpNetCoreWebApi\\CSharpDotNetCoreWebAPI\\Models\\Models.csproj",
+        "projectName": "Models",
+        "projectPath": "C:\\Users\\heyme\\source\\repos\\CSharpNetCoreWebApi\\CSharpDotNetCoreWebAPI\\Models\\Models.csproj"
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
     "C:\\Users\\heyme\\source\\repos\\CSharpNetCoreWebApi\\CSharpDotNetCoreWebAPI\\WebAPI\\WebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -27,7 +37,11 @@
         "frameworks": {
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\heyme\\source\\repos\\CSharpNetCoreWebApi\\CSharpDotNetCoreWebAPI\\Models\\Models.csproj": {
+                "projectPath": "C:\\Users\\heyme\\source\\repos\\CSharpNetCoreWebApi\\CSharpDotNetCoreWebAPI\\Models\\Models.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -39,6 +53,16 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.AspNetCore.Authentication": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[3.1.10, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
