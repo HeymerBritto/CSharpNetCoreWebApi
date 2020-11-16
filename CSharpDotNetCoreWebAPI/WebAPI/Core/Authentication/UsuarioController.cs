@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Models.Authentication;
 using System;
+using System.Linq;
+using WebAPI.Core.EntityCore;
 using WebAPI.Core.JWT;
 
 namespace WebAPI.Core.Authentication
@@ -10,6 +12,13 @@ namespace WebAPI.Core.Authentication
     [ApiController]
     public class UsuarioController : ControllerBase
     {
+        private readonly DataContext _context;
+
+        public UsuarioController(DataContext DataContext)
+        {
+            _context = DataContext;
+        }
+
         [HttpPost]
         [Route("login")]
         public ActionResult<dynamic> Authenticate([FromBody] Usuario model)
@@ -33,6 +42,28 @@ namespace WebAPI.Core.Authentication
                 user,
                 token
             };
+        }
+
+        [HttpGet]
+        [Route("popular")]
+        public ActionResult<dynamic> Popular(int Qtde = 1000)
+        {
+            var last = _context.Usuario.Count() + 1;
+
+            for (int i = 0; i < Qtde; i++)
+            {
+
+                _context.Usuario.Add(new Usuario()
+                {
+                    Username = $@"Usuário {last + i}",
+                    Password = "123456",
+                    Role = "manager"
+                });
+            }
+
+            _context.SaveChanges();
+
+            return new { result = true };
         }
 
         [HttpGet]
